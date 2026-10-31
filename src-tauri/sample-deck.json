@@ -1,0 +1,21 @@
+{
+  "deck_name": "Getting Started",
+  "cards": [
+    {
+      "front": "Where do deck files go?",
+      "back": "Drop any .json file into this app's flashcards folder. It loads without a restart."
+    },
+    {
+      "front": "What does a deck file look like?",
+      "back": "{\"deck_name\": \"Name\", \"cards\": [{\"front\": \"Q\", \"back\": \"A\"}]}"
+    },
+    {
+      "front": "What happens to a card you mark Failed?",
+      "back": "It counts as Again and comes back after a short step, once other cards have had their turn."
+    },
+    {
+      "front": "What happens if you respawn mid-card?",
+      "back": "Nothing is lost and nothing is graded. The same card comes back in the same state on your next death."
+    }
+  ]
+}

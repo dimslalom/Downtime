@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@custom-variant short (@media (max-height: 600px));
+
+@theme {
+  --color-paper: #ffffff;
+  --color-ink: #161616;
+  --animate-card-in: card-in 80ms ease-out;
+
+  @keyframes card-in {
+    from {
+      opacity: 0.5;
+      transform: translateY(3px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Hand-drawn controls carry a second drawing, so a hover redraws the line once. */
+.hand-hover {
+  display: none;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  button:enabled:hover .hand-rest,
+  input:enabled:hover + svg .hand-rest {
+    display: none;
+  }
+
+  button:enabled:hover .hand-hover,
+  input:enabled:hover + svg .hand-hover {
+    display: inline;
+  }
+}
+
+.overlay-stage {
+  padding: clamp(24px, 6vh, 72px) clamp(24px, 8vw, 160px);
+}
+
+.overlay-stack {
+  width: min(720px, 56vw);
+  max-height: 100%;
+}
+
+.overlay-peek {
+  width: clamp(340px, 30vw, 560px);
+  max-height: 100%;
+}
+
+.overlay-card-area {
+  scrollbar-width: thin;
+  scrollbar-color: #737373 #fff;
+}
+
+.overlay-advance {
+  animation: overlay-advance 90ms ease-out;
+}
+
+.overlay-fail {
+  animation: overlay-fail 90ms ease-out;
+}
+
+@keyframes overlay-advance {
+  from { opacity: 0.65; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes overlay-fail {
+  0% { transform: translateX(-6px); }
+  45% { transform: translateX(4px); }
+  75% { transform: translateX(-2px); }
+  100% { transform: translateX(0); }
+}
+
+@media (max-width: 900px) {
+  .overlay-stack { width: min(720px, 100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay-advance, .overlay-fail { animation: none; }
+}
+
+/* The window is transparent; only the backdrop should tint the game. */
+html,
+body {
+  margin: 0;
+  overflow: hidden;
+  background: transparent;
+}

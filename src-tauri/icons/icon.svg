@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- paper tile, one pen stroke that overshoots where it meets its own start -->
+  <path d="M82 948C74 760 70 420 78 214C80 128 118 86 206 80C400 68 640 72 816 78C908 82 944 122 946 208C952 400 952 640 944 812C940 906 900 942 812 944C620 952 300 952 46 944" fill="#ffffff" stroke="#161616" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="none" stroke="#161616" stroke-width="56" stroke-linecap="round" stroke-linejoin="round">
+    <!-- ghost -->
+    <path d="M262 812C256 650 244 480 288 350C330 222 470 170 600 222C720 272 772 400 776 560C778 650 780 740 778 806"/>
+    <path d="M262 812C292 768 322 762 348 808C372 852 412 850 434 798C456 752 498 756 522 804C546 850 590 848 612 796C634 752 674 752 698 800C720 842 760 838 778 806"/>
+    <path d="M472 548C494 586 540 584 562 536" stroke-width="44"/>
+  </g>
+  <path d="M396 436C396 396 452 392 456 434C460 478 398 482 396 436Z" fill="#161616"/>
+  <path d="M564 424C564 386 618 382 622 424C626 468 566 470 564 424Z" fill="#161616"/>
+</svg>
