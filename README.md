@@ -14,9 +14,9 @@ Dead with a minute to wait? Press a key, recall a card, and get back to the game
 [![CI](https://github.com/dimslalom/downtime/actions/workflows/ci.yml/badge.svg)](https://github.com/dimslalom/downtime/actions/workflows/ci.yml)
 [![MIT license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-<img src="docs/screenshots/peek.png" alt="A small flashcard at the side of the screen, with the game still in full view" width="820" />
+<img src="docs/screenshots/peek.png" alt="A small flashcard at the side of a Valorant match, with the round still in view" width="820" />
 
-<sub>Peek keeps the game in view. The background here is a mock scene, not a real game.</sub>
+<sub>Peek keeps the round in view while you're dead. Captured over real Valorant footage, with player names blurred.</sub>
 
 </div>
 
@@ -67,14 +67,14 @@ On many laptops, function keys also need <kbd>Fn</kbd>.
 <table>
   <tr>
     <td width="50%"><img src="docs/screenshots/library.png" alt="The home screen with a deck library" /></td>
-    <td width="50%"><img src="docs/screenshots/rest.png" alt="A tick after grading, offering one more card" /></td>
+    <td width="50%"><img src="docs/screenshots/rest.png" alt="A tick after grading, offering one more card, over Apex Legends" /></td>
   </tr>
   <tr>
     <td align="center">Your library</td>
     <td align="center">After a grade, take one more or carry on</td>
   </tr>
   <tr>
-    <td width="50%"><img src="docs/screenshots/full-screen.png" alt="A large card over a dimmed game" /></td>
+    <td width="50%"><img src="docs/screenshots/full-screen.png" alt="A large card over a dimmed Overwatch 2 match" /></td>
     <td width="50%"><img src="docs/screenshots/settings.png" alt="Settings for overlay style and keys" /></td>
   </tr>
   <tr>
@@ -140,4 +140,4 @@ Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 [MIT](LICENSE)
 
-Downtime isn't affiliated with or endorsed by Riot Games, Blizzard Entertainment, Valve, Electronic Arts, Respawn Entertainment or Overwolf. Game names belong to their owners.
+Downtime isn't affiliated with or endorsed by Riot Games, Blizzard Entertainment, Valve, Electronic Arts, Respawn Entertainment or Overwolf. Game names and the gameplay shown in the screenshots belong to their owners.
