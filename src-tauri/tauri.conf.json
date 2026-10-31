@@ -42,7 +42,19 @@
   },
   "bundle": {
     "active": true,
-    "targets": "all",
-    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.ico"]
+    "targets": [
+      "nsis"
+    ],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.ico"
+    ],
+    "publisher": "Dimas Gistha Adnyana",
+    "copyright": "Copyright (c) 2026 Dimas Gistha Adnyana",
+    "category": "Education",
+    "shortDescription": "Flashcards for the downtime in your games",
+    "longDescription": "A small overlay that lets you study flashcards while you wait in a game."
   }
 }

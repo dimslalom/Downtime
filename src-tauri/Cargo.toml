@@ -3,6 +3,8 @@ name = "downtime"
 version = "0.1.0"
 description = "Flashcard overlay for video game downtime"
 edition = "2021"
+license = "MIT"
+repository = "https://github.com/dimslalom/downtime"
 
 [lib]
 name = "downtime_lib"
