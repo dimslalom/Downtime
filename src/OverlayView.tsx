@@ -5,8 +5,9 @@ import Lettered from "./components/Lettered";
 import { PEN_DRAWINGS, PenIcon, PenStat } from "./components/PenIcon";
 import { useHotkeys, useLibrary, useOverlayVisibility, useStudyKeys, useStudyView } from "./hooks";
 import { mockHotkeySource } from "./services/gameEvents";
-import { formatHotkey } from "./services/hotkey";
+import { formatHotkey, type Placement } from "./services/hotkey";
 import { initialStudyState, studyReducer, type PeekRest, type StudyState } from "./study";
+import { PLACEMENT_ALIGN } from "./styles";
 import type { CardType, CardView, DeckError, Mode, SessionView } from "./types";
 
 const FRONT_TEXT_SIZES = [
@@ -343,9 +344,10 @@ interface OverlayContentProps {
   study: StudyState;
   hideKey?: string;
   peek?: boolean;
+  placement?: Placement;
 }
 
-export function OverlayContent({ study, hideKey, peek = false }: OverlayContentProps) {
+export function OverlayContent({ study, hideKey, peek = false, placement = "right" }: OverlayContentProps) {
   const session = study.view?.session ?? null;
   const modeLabel = session ? MODE_LABELS[session.mode] : null;
 
@@ -353,7 +355,7 @@ export function OverlayContent({ study, hideKey, peek = false }: OverlayContentP
     return (
       <main
         onContextMenu={(event) => event.preventDefault()}
-        className="overlay-stage flex h-dvh items-center justify-end select-none"
+        className={`overlay-peek-stage flex h-dvh select-none ${PLACEMENT_ALIGN[placement]}`}
       >
         <div className="overlay-peek flex min-h-0 flex-col">
           <PeekSheet study={study} hideKey={hideKey} />
@@ -411,5 +413,5 @@ export default function OverlayView() {
     return () => clearTimeout(timer);
   }, [visible, peek, study.rest]);
 
-  return <OverlayContent study={study} hideKey={hotkeys?.hideKey} peek={peek} />;
+  return <OverlayContent study={study} hideKey={hotkeys?.hideKey} peek={peek} placement={hotkeys?.placement} />;
 }

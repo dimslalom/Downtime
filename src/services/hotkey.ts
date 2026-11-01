@@ -1,12 +1,24 @@
 import { invoke } from "@tauri-apps/api/core";
 import { listen, type UnlistenFn } from "@tauri-apps/api/event";
 
+/** Mirrors `Placement` in src-tauri/src/mock_trigger.rs. */
+export type Placement =
+  | "top-left"
+  | "top"
+  | "top-right"
+  | "left"
+  | "right"
+  | "bottom-left"
+  | "bottom"
+  | "bottom-right";
+
 /** Mirrors `Hotkeys` in src-tauri/src/mock_trigger.rs. */
 export interface Hotkeys {
   openHotkey: string;
   hideKey: string;
   openRegistered: boolean;
   peek: boolean;
+  placement: Placement;
 }
 
 /** Delivers the current hotkeys, then every change made on the settings page. */

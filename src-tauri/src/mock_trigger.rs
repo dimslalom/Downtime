@@ -21,12 +21,28 @@ pub enum GameEvent {
     Respawn,
 }
 
+/// Where the Peek card sits. The centre is left out so it never covers the crosshair.
+#[derive(Clone, Copy, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[serde(rename_all = "kebab-case")]
+pub enum Placement {
+    TopLeft,
+    Top,
+    TopRight,
+    Left,
+    #[default]
+    Right,
+    BottomLeft,
+    Bottom,
+    BottomRight,
+}
+
 #[derive(Deserialize, Serialize)]
 #[serde(default)]
 struct Settings {
     open_hotkey: String,
     hide_key: String,
     peek: bool,
+    placement: Placement,
 }
 
 impl Default for Settings {
@@ -35,6 +51,7 @@ impl Default for Settings {
             open_hotkey: "F9".into(),
             hide_key: "Escape".into(),
             peek: true,
+            placement: Placement::default(),
         }
     }
 }
@@ -49,6 +66,7 @@ pub struct Hotkeys {
     open_registered: bool,
     /// One compact card at the side, instead of the dimmed full-screen layout.
     peek: bool,
+    placement: Placement,
 }
 
 pub struct HotkeyState {
@@ -62,6 +80,7 @@ impl HotkeyState {
             open_hotkey: hotkeys.open_hotkey.clone(),
             hide_key: hotkeys.hide_key.clone(),
             peek: hotkeys.peek,
+            placement: hotkeys.placement,
         };
         let contents =
             serde_json::to_string_pretty(&settings).map_err(|error| error.to_string())?;
@@ -175,6 +194,18 @@ pub fn set_peek(app: AppHandle, state: State<HotkeyState>, peek: bool) -> Result
     state.save(&hotkeys)
 }
 
+#[tauri::command]
+pub fn set_placement(
+    app: AppHandle,
+    state: State<HotkeyState>,
+    placement: Placement,
+) -> Result<(), String> {
+    let mut hotkeys = state.hotkeys.lock().expect("hotkey state poisoned");
+    hotkeys.placement = placement;
+    let _ = app.emit(HOTKEYS_EVENT, hotkeys.clone());
+    state.save(&hotkeys)
+}
+
 pub fn register<R: Runtime>(app: &AppHandle<R>) -> Result<(), Box<dyn std::error::Error>> {
     app.plugin(
         tauri_plugin_global_shortcut::Builder::new()
@@ -207,6 +238,7 @@ pub fn register<R: Runtime>(app: &AppHandle<R>) -> Result<(), Box<dyn std::error
             hide_key: settings.hide_key,
             open_registered: registered.is_ok(),
             peek: settings.peek,
+            placement: settings.placement,
         }),
         settings_path,
     });
@@ -242,5 +274,12 @@ mod tests {
         assert_eq!(settings.open_hotkey, "F9");
         assert_eq!(settings.hide_key, "KeyQ");
         assert!(settings.peek);
+        assert_eq!(settings.placement, Placement::Right);
+    }
+
+    #[test]
+    fn placement_uses_the_names_the_frontend_sends() {
+        let settings: Settings = serde_json::from_str(r#"{"placement": "bottom-left"}"#).unwrap();
+        assert_eq!(settings.placement, Placement::BottomLeft);
     }
 }

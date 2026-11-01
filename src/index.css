@@ -40,6 +40,10 @@
   padding: clamp(24px, 6vh, 72px) clamp(24px, 8vw, 160px);
 }
 
+.overlay-peek-stage {
+  padding: clamp(16px, 3vh, 40px) clamp(16px, 2vw, 48px);
+}
+
 .overlay-stack {
   width: min(720px, 56vw);
   max-height: 100%;

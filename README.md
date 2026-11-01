@@ -28,7 +28,7 @@ Downtime turns them into a few seconds of real recall. It stays out of the way u
 
 ## Features
 
-- **Peek:** one small card at the side, with no screen dim, so you can keep watching the round.
+- **Peek:** one small card with no screen dim, so you can keep watching the round. Place it wherever your game leaves free.
 - **One-handed:** flip and grade from the keyboard, without touching the mouse.
 - **Picks up where you left:** hide the overlay mid-card and the same card comes back in the same state.
 - **Real spaced repetition:** scheduling uses [FSRS](https://github.com/open-spaced-repetition/fsrs-rs), and it can personalise itself from your reviews.

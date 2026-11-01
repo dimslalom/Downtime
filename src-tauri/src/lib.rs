@@ -104,6 +104,7 @@ pub fn run() {
             mock_trigger::set_open_hotkey,
             mock_trigger::set_hide_key,
             mock_trigger::set_peek,
+            mock_trigger::set_placement,
             mock_trigger::suspend_open_hotkey,
             flashcards::open_flashcards_folder,
             study::commands::load_decks,

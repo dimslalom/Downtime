@@ -1,12 +1,49 @@
 import { invoke } from "@tauri-apps/api/core";
 import { useEffect, useState } from "react";
-import { HandButton } from "./components/HandDrawn";
+import { HandButton, HandOutline } from "./components/HandDrawn";
 import Lettered from "./components/Lettered";
-import { formatHotkey, shortcutFromEvent, type Hotkeys } from "./services/hotkey";
-import { KEYCAP, PAGE, TEXT_FIELD } from "./styles";
+import { formatHotkey, shortcutFromEvent, type Hotkeys, type Placement } from "./services/hotkey";
+import { KEYCAP, PAGE, PLACEMENT_ALIGN, TEXT_FIELD } from "./styles";
 import type { HomeSnapshot, StudySettings } from "./types";
 
 type SetCommand = "set_open_hotkey" | "set_hide_key";
+
+/** Laid out like the screen. The gap in the middle is the crosshair. */
+const PLACEMENT_CELLS: ({ placement: Placement; label: string } | null)[] = [
+  { placement: "top-left", label: "Top left" },
+  { placement: "top", label: "Top" },
+  { placement: "top-right", label: "Top right" },
+  { placement: "left", label: "Left" },
+  null,
+  { placement: "right", label: "Right" },
+  { placement: "bottom-left", label: "Bottom left" },
+  { placement: "bottom", label: "Bottom" },
+  { placement: "bottom-right", label: "Bottom right" },
+];
+
+function PlacementPicker({ value, onChange }: { value: Placement; onChange: (placement: Placement) => void }) {
+  return (
+    <div role="group" aria-label="Card placement" className="relative isolate grid aspect-video w-64 shrink-0 grid-cols-3 grid-rows-3 p-2">
+      <HandOutline seed={37} shape="panel" className="fill-paper stroke-ink stroke-[1.5]" />
+      {PLACEMENT_CELLS.map((cell) =>
+        cell ? (
+          <button
+            key={cell.placement}
+            type="button"
+            aria-label={cell.label}
+            aria-pressed={cell.placement === value}
+            onClick={() => onChange(cell.placement)}
+            className={`group flex cursor-pointer rounded-sm p-1 outline-emerald-700 focus-visible:outline-2 ${PLACEMENT_ALIGN[cell.placement]}`}
+          >
+            <span className={`h-5 w-9 rounded-xs ${cell.placement === value ? "bg-ink" : "bg-neutral-300 group-hover:bg-neutral-500"}`} />
+          </button>
+        ) : (
+          <span key="crosshair" aria-hidden className="place-self-center text-lg leading-none text-neutral-400">+</span>
+        ),
+      )}
+    </div>
+  );
+}
 
 interface KeyRowProps {
   title: string;
@@ -168,6 +205,10 @@ export default function SettingsView({ hotkeys, home, onBack }: SettingsViewProp
     invoke("set_peek", { peek: next }).catch((message: unknown) => setError(String(message)));
   };
 
+  const setPlacement = (placement: Placement) => {
+    invoke("set_placement", { placement }).catch((message: unknown) => setError(String(message)));
+  };
+
   useEffect(() => {
     if (!capturing) return;
 
@@ -230,6 +271,15 @@ export default function SettingsView({ hotkeys, home, onBack }: SettingsViewProp
             </HandButton>
           </div>
         </div>
+        {peek && (
+          <div className="flex items-center justify-between gap-8 border-b border-neutral-200 py-5">
+            <div className="flex flex-col gap-1">
+              <h2 className="text-xl font-semibold text-ink">Card placement</h2>
+              <p className="text-base text-neutral-600">Pick a spot your game leaves free.</p>
+            </div>
+            <PlacementPicker value={hotkeys?.placement ?? "right"} onChange={setPlacement} />
+          </div>
+        )}
         <KeyRow
           title="Open overlay"
           seed={31}
