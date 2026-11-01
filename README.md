@@ -14,9 +14,9 @@ Dead with a minute to wait? Press a key, recall a card, and get back to the game
 [![CI](https://github.com/dimslalom/downtime/actions/workflows/ci.yml/badge.svg)](https://github.com/dimslalom/downtime/actions/workflows/ci.yml)
 [![MIT license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-<img src="docs/screenshots/peek.png" alt="A small flashcard at the side of a Valorant match, with the round still in view" width="820" />
+<img src="docs/screenshots/demo-peek.webp" alt="A Valorant player dies, presses F9, then flips and passes a small flashcard while the round plays on" width="820" />
 
-<sub>Peek keeps the round in view while you're dead. Captured over real Valorant footage, with player names blurred.</sub>
+<sub>Die, press a key, recall a card, and the round stays in view. Real Valorant footage with player names blurred. The card is the real overlay, added in editing, and the clip jumps ahead when it opens.</sub>
 
 </div>
 
@@ -74,7 +74,7 @@ On many laptops, function keys also need <kbd>Fn</kbd>.
     <td align="center">After a grade, take one more or carry on</td>
   </tr>
   <tr>
-    <td width="50%"><img src="docs/screenshots/full-screen.png" alt="A large card over a dimmed Overwatch 2 match" /></td>
+    <td width="50%"><img src="docs/screenshots/demo-full-screen.webp" alt="A Valorant player dies and studies a large card over the dimmed match" /></td>
     <td width="50%"><img src="docs/screenshots/settings.png" alt="Settings for overlay style and keys" /></td>
   </tr>
   <tr>
