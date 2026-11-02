@@ -4,7 +4,7 @@ export type GameEvent = "death" | "respawn";
 
 export type GameEventListener = (event: GameEvent) => void;
 
-/** Where death and respawn events come from. Overwolf will implement this later. */
+/** Where death and respawn events come from. Only the manual keys for now. */
 export interface GameEventSource {
   start(listener: GameEventListener): Promise<UnlistenFn>;
 }

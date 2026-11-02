@@ -1,5 +1,4 @@
 pub mod flashcards;
-mod game_bridge;
 mod mock_trigger;
 mod overlay;
 pub mod study;
@@ -76,7 +75,6 @@ pub fn run() {
                 WebviewWindowBuilder::from_config(app.handle(), &config)?.build()?;
             }
             build_tray(app)?;
-            game_bridge::start(app.handle().clone());
             Ok(())
         })
         .on_window_event(|window, event| {

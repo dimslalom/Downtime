@@ -23,11 +23,9 @@ cargo check --manifest-path src-tauri/Cargo.toml
 cargo test --manifest-path src-tauri/Cargo.toml --lib
 ```
 
-If you change `overwolf-helper/`, also run `npm test` inside that folder.
-
 ## Project rules
 
-[CLAUDE.md](CLAUDE.md) holds the design rules and a map of the code. The ones that matter most:
+The rules that matter most:
 
 - No UI component libraries.
 - The overlay stays keyboard-driven, and its animations stay under 100ms.
@@ -44,4 +42,4 @@ npm run tauri dev -- --config src-tauri/tauri.dev.conf.json
 
 ## Secrets
 
-Never commit an Overwolf developer key, an API key, or your personal decks and review data.
+Never commit an API key or your personal decks and review data.

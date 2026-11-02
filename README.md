@@ -114,7 +114,7 @@ Downtime's design leans on a few well-studied ideas. None of these studies teste
 
 Downtime is an early release, built around real play-testing in Valorant.
 
-- **Manual only for now.** You open the overlay yourself. `overwolf-helper/` is an unfinished experiment with automatic triggers, and it isn't part of the app.
+- **Manual only for now.** You open the overlay yourself. Downtime doesn't detect deaths or queues.
 - **Game compatibility varies.** The overlay is an ordinary always-on-top window, so it can't draw over exclusive fullscreen.
 - **Check your game's rules.** Downtime doesn't read game memory, and it gives no gameplay help. Even so, Riot's [VALORANT developer rules](https://developer.riotgames.com/docs/valorant) disapprove of static overlays that block parts of the map, so whether to use it, especially in ranked play, is your call.
 - **Known bug.** If you open the overlay from Downtime's own window, focus can stay on the hidden overlay until you click something. Coming from a game works normally.

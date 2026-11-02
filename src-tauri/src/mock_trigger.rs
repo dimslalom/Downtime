@@ -13,7 +13,7 @@ const RESERVED_KEYS: [&str; 10] = [
     "Space", "ArrowLeft", "ArrowRight", "Tab", "Digit1", "Digit2", "Digit3", "Digit4", "KeyN", "KeyI",
 ];
 
-/// Stands in for the future Overwolf death/respawn events.
+/// Stands in for death and respawn events from a game.
 #[derive(Clone, Copy, Deserialize, Serialize)]
 #[serde(rename_all = "lowercase")]
 pub enum GameEvent {
